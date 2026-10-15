@@ -24,7 +24,7 @@ const registerPatient = async (req,res,next)=>{
             password:hashedPassword,
             role:'patient'
         })
-        const token = jwt.sign({id:user.id,role:user.role},process.env.JWT_KEY)
+        const token = jwt.sign({id:user.id,role:user.role},process.env.JWT_KEY,{expiresIn:'1d'})
         return res.status(201).json({message:'Patient registered successfully',token,user:{id:user.id,name:user.name,email:user.email,role:user.role}})
     }catch(err){
         return res.status(409).json({message:'Account registration failed',error:err})
@@ -48,7 +48,7 @@ const login = async (req,res,next)=>{
     const user = await User.findOne({email:email.trim()})
 
     if (!user || !(await bcrypt.compare(password,user.password))){
-        return res.status(401).json({message:"Invalid Credentials"})
+        return res.status(401).json({message:"Invalid Credentials "})
     }
 
     const token = jwt.sign({id:user.id,role:user.role},process.env.JWT_KEY,{expiresIn:'1d'})
