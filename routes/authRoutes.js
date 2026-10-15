@@ -3,8 +3,8 @@ const { registerPatient, login } = require('../controllers/authController');
 
 const router = express.Router();
 
-router.post('/register',registerPatienttient)
-router.post('login',loginin)
+router.post('/register',registerPatient)
+router.post('/login',login)
 
 
 module.exports = router
