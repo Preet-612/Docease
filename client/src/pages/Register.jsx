@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Card, CardBody, CardTitle, Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 const Register = () => {
 
     const [name,setName] = useState('');
@@ -8,6 +8,7 @@ const Register = () => {
     const [password,setPassword] = useState('');
     const [error,setError] = useState('');
     const [loading,setLoading] = useState(false)
+    const navigate = useNavigate()
     
     const handleSubmit = async (e)=> {
         e.preventDefault();
@@ -21,9 +22,16 @@ const Register = () => {
             },
             body: JSON.stringify({name,email,password})
           })
-          console.log(data)
+          const result = await data.json()
+          console.log(result)
+          if(result.token){
+            localStorage.setItem('token',result.token)
+            navigate('/dashboard')
+            }
+          setLoading(false)
         }catch(err){
           setError(err.message);
+          setLoading(false)
         }
     }
 
