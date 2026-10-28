@@ -1,20 +1,59 @@
-import { Card, CardBody, CardTitle, Container, Row, Col } from 'reactstrap';
-
+import { useState } from 'react';
+import { Card, CardBody, CardTitle, Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import {Link} from 'react-router-dom';
 const Register = () => {
+
+    const [name,setName] = useState('');
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+    const [error,setError] = useState('');
+    const [loading,setLoading] = useState(false)
+    
+    const handleSubmit = async (e)=> {
+        e.preventDefault();
+        setLoading(true);
+        setError('')
+        try{
+          const data = await fetch("http://localhost:5000/api/auth/register",{
+            method: 'POST',
+            headers:{
+              'Content-Type':'application/json'
+            },
+            body: JSON.stringify({name,email,password})
+          })
+          console.log(data)
+        }catch(err){
+          setError(err.message);
+        }
+    }
+
   return (
     <>
-        <Container className='py-5'>
+        <Container className='py-5 mt-5 bg-gray-100'>
         <Row className='justify-content-center'>
           <Col md='6' lg='5'>
             <Card>
               <CardBody>
-                <CardTitle className='mb-4'>Create Account</CardTitle>
-                    <p>Patient registration only.</p>
-                    <Form>
+                <CardTitle tag='h3' className='mb-4'>Create Account</CardTitle>
+                    <p className='text-muted'>Patient registration only.</p>
+                    <Form onSubmit={handleSubmit}>
                         <FormGroup>
-                            
+                            <Label for='registerName'>Full Name</Label>
+                            <Input  type="text" id='registerName'  onChange={(e)=>setName(e.target.value)} value={name} name='name' className='form-control' placeholder='Enter your full name'required/>
                         </FormGroup>
+                        <FormGroup>
+                            <Label for='registerEmail'>Email</Label>
+                            <Input  type="text" id='registerEmail'  onChange={(e)=>setEmail(e.target.value)} value={email} name='email' className='form-control' placeholder='Enter your email'required/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for='registerPassword'>Password</Label>
+                            <Input  type="text" id='registerPassword'  onChange={(e)=>setPassword(e.target.value)} value={password} name='password' className='form-control' placeholder='Enter your password'required/>
+                        </FormGroup>
+                        <Button type='submit' color='primary' className='w-100' disabled={loading}>
+                            {loading ? 'Registering..' : 'Register'}
+                        </Button>
                     </Form>
+                    <p className='text-center mt-3 mb-0 text-muted'>Already have an account? <Link to="/login">Sign in</Link></p>
               </CardBody>
             </Card>
           </Col>
