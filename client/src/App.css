@@ -1,0 +1,126 @@
+
+.brand {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    
+    text-decoration: none;
+    font-weight: 700;
+}
+.brand span{
+    color:blue;
+    font-size: 26px;
+}
+.app-header{
+    position: fixed;
+    top:0;
+    left:0;
+    right: 0;
+    z-index: 100;
+    min-height: 68px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid gray;
+    padding: 0 6vw;
+}
+
+.main-nav{
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.nav-logout-btn{
+    background-color: #fff;
+    border: 1px solid gray;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+.nav-logout-btn:hover{
+    background-color: #f0f0f0;
+}
+.nav-user-name{
+    font-weight: 600;
+    color: #333;
+}
+
+.main-nav a{
+    color: black;
+    font-size: 16px;
+    text-decoration: none;
+}
+
+
+/* Home Page Css */
+
+.home-page{
+    background-color: #f2f2f2f2;
+    margin-top: 68px;
+    padding: 48px 0 56px;
+}
+
+.home-heading{
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+.home-title{
+    color: rgb(54, 54, 175);
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.home-lead{
+    font-size: 1.1rem;
+    max-width: 580px;
+}
+
+.home-hero-img{
+    max-width: 100%;
+    width: 420px;
+    border-radius: 16px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.home-action{
+    display: flex;
+    flex-wrap: wrap;
+    gap:12px
+}
+
+.home-steps{
+    padding: 40px 0 56px;
+}
+.home-steps-title{
+    text-align: center;
+    font-size: 1.75rem;
+    margin-bottom: 32px;
+}
+.home-step-card{
+    background-color: #fff;
+    /* border: 1px solid var(--border); */
+    border-radius: 12px;
+    padding: 24px;
+    height: 100%;
+}
+.home-step-num{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    border-radius: 5%;
+    font-weight: 700;
+    margin-bottom: 12px;
+    height: 36px;
+    background-color: rgb(171, 171, 245);
+
+}
+.home-step-card p{
+    margin-top: 0;
+    font-size: 15px;
+}
