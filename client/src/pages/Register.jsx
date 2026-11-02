@@ -37,7 +37,7 @@ const Register = () => {
 
   return (
     <>
-        <Container className='py-5 mt-5 bg-gray-100'>
+        <Container className='py-5 mt-5'>
         <Row className='justify-content-center'>
           <Col md='6' lg='5'>
             <Card>
